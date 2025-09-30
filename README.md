@@ -7,7 +7,7 @@ Memento visualises how many weeks you have lived, how many remain, and how every
 - Quiet grid view that maps each week of your life, highlighting lived, current, and remaining productive weeks.
 - Countdown view with a live timer that accelerates when non-productive conditions are excluded.
 - Editable conditions: toggle exclusion, adjust daily hours, or add custom activities.
-- Chrome extension bundle (`extension/`) that replaces the new tab page with the same interface.
+- Chrome extension bundle (`extension/`) that replaces the new tab page, adds a toolbar snapshot popup, badge indicator, and gentle focus reminders on distracting sites.
 
 ## Quick Start (Website)
 1. Clone or download the repository.

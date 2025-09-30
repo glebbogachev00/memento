@@ -24,6 +24,29 @@ let state = {
     isSetup: false
 };
 
+function getPersistableState() {
+    return {
+        birthdate: state.birthdate,
+        lifeExpectancyYears: state.lifeExpectancyYears,
+        conditions: state.conditions
+    };
+}
+
+function syncExtensionStorage() {
+    if (typeof chrome === 'undefined' || !chrome.storage || !chrome.storage.local) {
+        return;
+    }
+    try {
+        chrome.storage.local.set({ [STORAGE_KEY]: getPersistableState() }, () => {
+            if (chrome.runtime && chrome.runtime.lastError) {
+                console.warn('Failed to sync with chrome.storage:', chrome.runtime.lastError.message);
+            }
+        });
+    } catch (err) {
+        console.warn('Failed to write to chrome.storage:', err);
+    }
+}
+
 // Utility functions
 function parseDate(dateString) {
     return new Date(dateString + 'T00:00:00');
@@ -142,6 +165,9 @@ function loadState() {
                 state.isSetup = true;
                 state.currentView = 'main';
             }
+            if (state.isSetup) {
+                syncExtensionStorage();
+            }
         }
     } catch (e) {
         console.error('Failed to load state:', e);
@@ -156,6 +182,9 @@ function saveState() {
             conditions: state.conditions,
             excludeConditions: state.excludeConditions
         }));
+        if (state.birthdate && state.lifeExpectancyYears) {
+            syncExtensionStorage();
+        }
     } catch (e) {
         console.error('Failed to save state:', e);
     }
