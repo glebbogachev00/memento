@@ -12,7 +12,7 @@ Life Weeks visualises how many weeks you have lived, how many remain, and how ev
 ## Quick Start (Website)
 1. Clone or download the repository.
 2. Open `index.html` in any modern browser.
-3. Complete the short setup (birthdate, life expectancy, sleep hours) to unlock all views.
+3. Complete the short setup (birthdate, life expectancy) to unlock all views.
 4. Use the **Edit** button in the header to manage life conditions.
 
 ## Chrome Extension

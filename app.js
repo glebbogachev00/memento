@@ -163,10 +163,9 @@ function saveState() {
 
 // View renderers
 function renderSetupView() {
-    const sleepCondition = state.conditions.find(c => c.id === 'sleep');
     return `
         <div class="setup-view">
-            <h1 class="setup-title">Life in Weeks</h1>
+            <h1 class="setup-title">Memento</h1>
             <p class="setup-subtitle">Visualize your life timeline and see how many weeks you have left</p>
             <form class="setup-form" id="setupForm">
                 <div class="input-group">
@@ -176,10 +175,6 @@ function renderSetupView() {
                 <div class="input-group">
                     <label class="input-label" for="setupLifeExpectancy">Expected lifespan (years)</label>
                     <input type="number" id="setupLifeExpectancy" class="input-field" min="1" max="120" value="80" required>
-                </div>
-                <div class="input-group">
-                    <label class="input-label" for="setupSleepHours">Average sleep hours per day</label>
-                    <input type="number" id="setupSleepHours" class="input-field" min="0" max="24" step="0.5" value="${sleepCondition?.hours || 8}" required>
                 </div>
                 <button type="submit" class="submit-btn">Calculate My Timeline</button>
             </form>
@@ -554,17 +549,10 @@ function handleSetupSubmit(e) {
     
     const birthdate = document.getElementById('setupBirthdate').value;
     const lifeExpectancy = parseInt(document.getElementById('setupLifeExpectancy').value);
-    const sleepHours = parseFloat(document.getElementById('setupSleepHours').value);
     
-    if (birthdate && lifeExpectancy >= 1 && lifeExpectancy <= 120 && sleepHours >= 0 && sleepHours <= 24) {
+    if (birthdate && lifeExpectancy >= 1 && lifeExpectancy <= 120) {
         state.birthdate = birthdate;
         state.lifeExpectancyYears = lifeExpectancy;
-        
-        // Update sleep condition
-        const sleepCondition = state.conditions.find(c => c.id === 'sleep');
-        if (sleepCondition) {
-            sleepCondition.hours = sleepHours;
-        }
         
         state.isSetup = true;
         state.currentView = 'main';
