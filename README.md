@@ -1,6 +1,6 @@
 # Memento – Life Weeks Tracker
 
-Life Weeks visualises how many weeks you have lived, how many remain, and how everyday conditions (sleep, screen time, work, etc.) change your productive time. The app works as a website and ships with a Chrome new-tab extension so your timeline is always a tab away.
+Memento visualises how many weeks you have lived, how many remain, and how everyday conditions (sleep, screen time, work, etc.) change your productive time. The app works as a website and ships with a Chrome new-tab extension so your timeline is always a tab away.
 
 ## Features
 - Interactive overview with unit toggles (hours, days, weeks, months, years) and a progress bar showing life lived vs. productive time left.
